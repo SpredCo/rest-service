@@ -1,0 +1,21 @@
+dbConfig:
+  host: localhost
+  port: 27017
+  dbName: spred
+
+server:
+  port: 3000
+
+devService:
+  url: dev.spred.local
+loginService:
+  url: login.spred.local
+apiService:
+  url: api.spred.local
+
+test:
+  dbConfig:
+    dbName: spred-test
+
+logFile: request.log
+googleApiKey: AIzaSyCp0VnNyEznPykPPhzA660Y1ZGdf0WGUxI
