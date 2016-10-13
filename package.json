@@ -22,6 +22,7 @@
     "express": "^4.14.0",
     "js-yaml": "^3.6.1",
     "mongoose": "^4.5.8",
+    "slack-transport": "git+ssh://git@github.com/guedjm/slack-transport.git",
     "spred-api-service": "git+ssh://git@github.com/spredco/api-service.git",
     "spred-dev-service": "git+ssh://git@github.com/spredco/dev-service.git",
     "spred-login-service": "git+ssh://git@github.com/spredco/login-service.git",

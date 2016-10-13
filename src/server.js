@@ -2,6 +2,7 @@ const config = require('config');
 const logger = require('winston');
 const express = require('express');
 const mongoose = require('mongoose');
+const slackTransport = require('slack-transport');
 
 const appLoader = require('./app');
 
@@ -10,6 +11,7 @@ var masterApp = null;
 function initializeLogger () {
   logger.info('Initializing logger ...');
   logger.add(logger.transports.File, {filename: config.get('logFile'), json: false});
+  logger.add(slackTransport, { webHook: 'https://hooks.slack.com/services/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'});
   logger.info('Logger initialized');
 }
 
