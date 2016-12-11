@@ -1,5 +1,5 @@
 dbConfig:
-  host: localhost
+  host: sharemyscreen.fr
   port: 27017
   dbName: spred
 

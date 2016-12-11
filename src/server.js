@@ -3,6 +3,7 @@ const logger = require('winston');
 const express = require('express');
 const mongoose = require('mongoose');
 const slackTransport = require('slack-transport');
+const algoliaHelper = require('./algoliaHelper');
 
 const appLoader = require('./app');
 
@@ -40,7 +41,7 @@ function initializeApp () {
   masterApp = express();
   logger.info('Master app initialized');
 
-  appLoader.registerApp(masterApp);
+  appLoader.registerApp(masterApp, algoliaHelper.addIndex);
 
   logger.info('Starting http server...');
   masterApp.listen(config.get('server.port'), function () {
@@ -57,9 +58,32 @@ function start () {
     if (err) {
       process.exit(1);
     } else {
+      algoliaHelper.init();
       initializeApp();
     }
   });
 }
 
+function initAlgolia () {
+  initializeLogger();
+
+  logger.info('Starting algolia indexing ...');
+
+  initializeDatabaseConnection(function (err) {
+    if (err) {
+      process.exit(1);
+    } else {
+      algoliaHelper.init();
+      algoliaHelper.indexAll(function (err) {
+        if (err) {
+          logger.error(err);
+        } else {
+          logger.info('Done !');
+        }
+      });
+    }
+  });
+}
+
 module.exports.start = start;
+module.exports.initAlgolia = initAlgolia;
