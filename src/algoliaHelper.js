@@ -50,7 +50,7 @@ function indexAll(cb) {
 
           logger.info('Indexing spredcasts ...');
           var casts = [];
-          common.spredCastModel.findAvailableCast(function (err, fCats) {
+          common.spredCastModel.find({}, function (err, fCats) {
             if (err) {
               cb(err);
             } else {
