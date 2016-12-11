@@ -29,6 +29,7 @@ function indexAll(cb) {
         users.push({
           type: 'user',
           pseudo: '@' + user.pseudo,
+          name: '@' + user.pseudo,
           fistname: user.firstName,
           lastname: user.lastName,
           objectID: user._id
