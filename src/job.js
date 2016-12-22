@@ -11,7 +11,7 @@ function remindCast(cb) {
       if (fCasts.length > 0) {
 
         fCasts.forEach(function (fCast) {
-          httpHelper.sendMail(fCast.creator.email, 'remindCaster', {
+          httpHelper.sendMail(fCast.creator.email, 'remind-caster', {
             username: fCast.creator.pseudo,
             cast_name: fCast.name,
             cast_url: fCast.url
@@ -26,7 +26,7 @@ function remindCast(cb) {
                   var i = 0;
                   if (fReminders.length > 0) {
                     fReminders.forEach(function (fReminder) {
-                      httpHelper.sendMail(fCast.creator.email, 'remindViewer', {
+                      httpHelper.sendMail(fCast.creator.email, 'remind-viewer', {
                         username: fReminder.user.pseudo,
                         cast_name: fCast.name,
                         cast_url: fCast.url
