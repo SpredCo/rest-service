@@ -28,6 +28,7 @@
     "spred-api-service": "git+ssh://git@github.com/spredco/api-service.git",
     "spred-common": "git+ssh://git@github.com/spredco/common.git",
     "spred-dev-service": "git+ssh://git@github.com/spredco/dev-service.git",
+    "spred-http-helper": "git+ssh://git@github.com/spredco/http-helper.git",
     "spred-login-service": "git+ssh://git@github.com/spredco/login-service.git",
     "vhost": "^3.0.2",
     "winston": "^2.2.0"

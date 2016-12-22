@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const slackTransport = require('slack-transport');
 const algoliaHelper = require('./algoliaHelper');
+const jobs = require('./job');
 
 const appLoader = require('./app');
 
@@ -85,5 +86,27 @@ function initAlgolia () {
   });
 }
 
+function doJobs () {
+  initializeLogger();
+
+  logger.info('Starting cron ...');
+
+  initializeDatabaseConnection(function (err) {
+    if (err) {
+      process.exit(1);
+    } else {
+      jobs.remindCast(function (err) {
+        if (err) {
+          console.error(err);
+          process.exit(1);
+        } else {
+          console.log('Done !');
+        }
+      });
+    }
+  });
+}
+
 module.exports.start = start;
 module.exports.initAlgolia = initAlgolia;
+module.exports.doJobs = doJobs;
