@@ -80,6 +80,7 @@ function initAlgolia () {
           logger.error(err);
         } else {
           logger.info('Done !');
+          process.exit(0);
         }
       });
     }
@@ -101,6 +102,7 @@ function doJobs () {
           process.exit(1);
         } else {
           console.log('Done !');
+          process.exit(0);
         }
       });
     }
