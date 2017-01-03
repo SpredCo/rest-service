@@ -1,6 +1,6 @@
 dbConfig:
-  host: sharemyscreen.fr
-  port: 27017
+  host: spred.tv
+  port: 8087
   dbName: spred
 
 server:

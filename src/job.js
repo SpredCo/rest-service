@@ -74,4 +74,32 @@ function remindCast(cb) {
   });
 }
 
+function endCast(cb) {
+  var endDate = new Date();
+  endDate.setMinutes(endDate.getMinutes() + 15);
+  common.spredCastModel.find({ state: 0, date: { $lt: endDate } }, function (err, fCasts) {
+    if (err) {
+      cb(err);
+    } else if (fCasts.length == 0) {
+      cb(null);
+    } else {
+      var i = 0;
+      fCasts.forEach(function (fCast) {
+        fCast.state = 3;
+        fCast.save(function (err) {
+          if (err) {
+            cb(err);
+          } else {
+            if (i == fCasts.length - 1) {
+              cb(null);
+            }
+            ++i;
+          }
+        });
+      });
+    }
+  });
+}
+
 module.exports.remindCast = remindCast;
+module.exports.endCast = endCast;

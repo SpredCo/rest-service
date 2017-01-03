@@ -96,15 +96,22 @@ function doJobs () {
     if (err) {
       process.exit(1);
     } else {
-      jobs.remindCast(function (err) {
+      /*jobs.remindCast(function (err) {
         if (err) {
           console.error(err);
           process.exit(1);
-        } else {
-          console.log('Done !');
-          process.exit(0);
-        }
-      });
+        } else {*/
+          jobs.endCast(function (err) {
+            if (err) {
+              console.error(err);
+              process.exit(1);
+            } else {
+              console.log('Done !');
+              process.exit(0);
+            }
+          });
+        /*}
+      });*/
     }
   });
 }
