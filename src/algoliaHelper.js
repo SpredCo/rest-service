@@ -51,7 +51,7 @@ function indexAll(cb) {
 
           logger.info('Indexing spredcasts ...');
           var casts = [];
-          common.spredCastModel.find({}, function (err, fCats) {
+          common.spredCastModel.find({ isPublic: true }, function (err, fCats) {
             if (err) {
               cb(err);
             } else {
